@@ -1,4 +1,4 @@
-import Format
+import Formatter
 public import SVG_Standard
 
 extension SVG.View {

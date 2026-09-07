@@ -1,5 +1,5 @@
 import Dictionary_Ordered
-import Format
+import Formatter
 public import SVG_Standard
 
 extension Geometry.Ball.SVGContext: SVG.View

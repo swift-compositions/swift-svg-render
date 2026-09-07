@@ -1,6 +1,6 @@
 import Dictionary_Ordered
 import Dimension
-import Format
+import Formatter
 public import Render
 
 public enum SVG {}
