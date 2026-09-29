@@ -1,5 +1,5 @@
 public import Dictionary_Ordered
-import Render
+import Renderer
 
 extension SVG {
     public struct Context: Sendable {

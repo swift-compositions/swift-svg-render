@@ -151,7 +151,7 @@ extension SVG.Test.Snapshot {
     @Test
     func `Circle math translation renders via svg`() {
         let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 25)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50))
+        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
         snapshot(
             as: .svg,
             { translated.svg },
@@ -259,7 +259,7 @@ extension SVG.Test.Snapshot {
     @Test
     func `Math translation then SVG rotation`() {
         let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 15)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50))
+        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
         let view = translated.svg.rotated(by: W3C_SVG2.Degrees(45))
         snapshot(
             as: .svg,
@@ -294,7 +294,7 @@ extension SVG.Test.Snapshot {
         let transformed =
             circle
             .scaled(by: 2.0)
-            .translated(by: W3C_SVG2.Vector(dx: 25, dy: 25))
+            .translated(by: W3C_SVG2.Vector(dx: 25, dy: 25), using: .cartesian)
         let view = transformed.svg.scaled(by: 1.5)
         snapshot(
             as: .svg,
@@ -310,7 +310,7 @@ extension SVG.Test.Snapshot {
     @Test
     func `Circle with fill after math and SVG transforms`() {
         let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 20)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50))
+        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
         let view = translated.svg
             .rotated(by: W3C_SVG2.Degrees(30))
             .fill("red")
@@ -348,7 +348,7 @@ extension SVG.Test.Snapshot {
     @Test
     func `Bounding box after math translation`() {
         let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 10)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50))
+        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
         let bbox = translated.boundingBox
         #expect(bbox.llx.rawValue - 40.0 < 0.001)
         #expect(bbox.lly.rawValue - 40.0 < 0.001)

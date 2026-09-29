@@ -1,6 +1,6 @@
-public import Render
+public import Renderer
 
-extension Render.Conditional: SVG.View where First: SVG.View, Second: SVG.View {
+extension Renderer.Document.Conditional: SVG.View where First: SVG.View, Second: SVG.View {
     public var body: Never { fatalError("body should not be called") }
 
     public static func _render<Buffer: RangeReplaceableCollection>(

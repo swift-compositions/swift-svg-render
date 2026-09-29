@@ -13,7 +13,7 @@ extension Target.Dependency {
 
 extension Target.Dependency {
     static var rendering: Self {
-        .product(name: "Render", package: "swift-render")
+        .product(name: "Renderer", package: "swift-renderer")
     }
     static var svgStandard: Self {
         .product(name: "SVG Standard", package: "swift-svg-standard")
@@ -22,10 +22,10 @@ extension Target.Dependency {
         .product(name: "ASCII", package: "swift-ascii")
     }
     static var formatting: Self {
-        .product(name: "Format", package: "swift-format")
+        .product(name: "Formatter", package: "swift-formatter")
     }
     static var dimension: Self {
-        .product(name: "Dimension", package: "swift-dimension")
+        .product(name: "Spatial", package: "swift-spatial")
     }
     static var dictionary: Self {
         .product(name: "Dictionary", package: "swift-dictionary")
@@ -36,11 +36,9 @@ extension Target.Dependency {
     static var hashIndexedPrimitive: Self {
         .product(name: "Hash Indexed Primitive", package: "swift-hash-table")
     }
-    static var column: Self {
-        .product(name: "Column", package: "swift-column")
-    }
-    static var hash: Self {
-        .product(name: "Hash", package: "swift-hash")
+
+    static var hashTablePrimitive: Self {
+        .product(name: "Hash Table Primitive", package: "swift-hash-table")
     }
     static var bufferLinearPrimitive: Self {
         .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear")
@@ -62,20 +60,18 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-render.git",
-            branch: "main"
-        ),
+            url: "https://github.com/swift-atoms/swift-renderer.git",
+            branch: "main", traits: ["Document"]),
         .package(url: "https://github.com/swift-standards/swift-svg-standard.git", branch: "main"),
         .package(
-            url: "https://github.com/swift-molecules/swift-format.git",
+            url: "https://github.com/swift-atoms/swift-formatter.git",
+            branch: "main", traits: ["Number", "Conversions", "Tagged"]),
+        .package(
+            url: "https://github.com/swift-atoms/swift-spatial.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-dimension.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-ascii.git",
+            url: "https://github.com/swift-atoms/swift-ascii.git",
             branch: "main"
         ),
         .package(
@@ -95,17 +91,16 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-column.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-hash.git",
-            branch: "main"
-        ),
-        .package(
             url: "https://github.com/swift-molecules/swift-buffer-linear.git",
             branch: "main"
         ),
+        .package(url: "https://github.com/swift-atoms/swift-buffer.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-buffer-ring.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-geometry.git", branch: "main", traits: ["Affine"]),
+        .package(url: "https://github.com/swift-atoms/swift-memory.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-memory-allocation.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-storage.git", branch: "main", traits: ["Generational", "Memory"]),
+        .package(url: "https://github.com/swift-atoms/swift-store.git", branch: "main"),
     ],
     targets: [
         .target(
@@ -123,9 +118,21 @@ let package = Package(
                 ),
                 .sharedPrimitive,
                 .hashIndexedPrimitive,
-                .column,
-                .hash,
+                .hashTablePrimitive,
                 .bufferLinearPrimitive,
+                .product(name: "Buffer", package: "swift-buffer"),
+                .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear"),
+                .product(name: "Buffer Linear Bounded Primitive", package: "swift-buffer-linear"),
+                .product(name: "Buffer Ring Primitive", package: "swift-buffer-ring"),
+                .product(name: "Memory Allocator Pool", package: "swift-memory-allocation"),
+                .product(name: "Memory Pool", package: "swift-memory-allocation"),
+                .product(name: "Memory Allocator", package: "swift-memory-allocation"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared"),
+                .product(name: "Storage", package: "swift-storage"),
+                .product(name: "Store", package: "swift-store"),
+                .product(name: "Geometry", package: "swift-geometry"),
+                .product(name: "SVG Standard", package: "swift-svg-standard"),
             ]
         ),
         .target(
@@ -133,8 +140,8 @@ let package = Package(
             dependencies: [
                 .svgRendering,
                 .product(
-                    name: "Dimension Test Support",
-                    package: "swift-dimension"
+                    name: "Spatial Test Support",
+                    package: "swift-spatial"
                 ),
             ],
             path: "Tests/Support"

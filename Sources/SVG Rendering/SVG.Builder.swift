@@ -1,5 +1,5 @@
-public import Render
+public import Renderer
 
 extension SVG {
-    public typealias Builder = Render.Builder
+    public typealias Builder = Renderer.Document.Builder
 }

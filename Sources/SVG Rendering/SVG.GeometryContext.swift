@@ -96,8 +96,7 @@ where Scalar == Double, Space == W3C_SVG.Space {
     }
 }
 
-extension Geometry.Line.Segment.SVGContext: SVG.View
-where Scalar == Double, Space == W3C_SVG.Space {
+extension W3C_SVG.Context.Segment: SVG.View {
     public var body: some SVG.View {
         let el = element
         return SVG.Element(tag: "line") { SVG.Empty() }

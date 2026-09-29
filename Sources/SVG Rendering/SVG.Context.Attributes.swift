@@ -1,9 +1,13 @@
 public import Buffer_Linear_Primitive
-public import Column
+public import Memory
+public import Memory_Allocator
+public import Storage
+public import Buffer
+
 public import Dictionary_Ordered
 public import Dictionary
 public import Hash_Indexed_Primitive
-import Hash
+import Hash_Table_Primitive
 public import Ownership_Shared_Primitive
 
 extension SVG.Context {
@@ -11,7 +15,7 @@ extension SVG.Context {
     public typealias Attributes = __DictionaryOrdered<
         Ownership.Shared<
             Hash.Entry<String, String>,
-            Hash.Indexed<Column.Heap<Hash.Entry<String, String>>>
+            Hash.Indexed<Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<Hash.Entry<String, String>>>.Linear>
         >
     >
 }

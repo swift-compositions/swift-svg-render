@@ -1,7 +1,7 @@
 import Dictionary_Ordered
-import Dimension
+import Spatial
 import Formatter
-public import Render
+public import Renderer
 
 public enum SVG {}
 
@@ -40,14 +40,14 @@ extension SVG.View {
     }
 
     public func attribute(_ name: String, _ value: Double?) -> SVG._Attributes<Self> {
-        attribute(name, value?.formatted(.number))
+        attribute(name, value?.formatted(Formatter.Number()))
     }
 
     public func attribute<Tag>(
         _ name: String,
         _ value: Tagged<Tag, Double>?
     ) -> SVG._Attributes<Self> {
-        attribute(name, value?.formatted(.number))
+        attribute(name, value?.formatted(Formatter.Number()))
     }
 }
 

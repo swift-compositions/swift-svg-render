@@ -1,6 +1,6 @@
-public import Render
+public import Renderer
 
-extension Render._Tuple: SVG.View where repeat each Content: SVG.View {
+extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View {
     public var body: Never { fatalError("body should not be called") }
 
     public static func _render<Buffer: RangeReplaceableCollection>(

@@ -1,4 +1,4 @@
-import Render
+import Renderer
 
 extension RangeReplaceableCollection<UInt8> {
 

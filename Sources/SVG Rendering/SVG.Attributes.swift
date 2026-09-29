@@ -13,11 +13,11 @@ extension SVG.View {
 
     public func stroke(_ color: String?, width: Double?) -> SVG._Attributes<Self> {
         attribute("stroke", color)
-            .attribute("stroke-width", width?.formatted(.number))
+            .attribute("stroke-width", width?.formatted(Formatter.Number()))
     }
 
     public func strokeWidth(_ width: Double?) -> SVG._Attributes<Self> {
-        attribute("stroke-width", width?.formatted(.number))
+        attribute("stroke-width", width?.formatted(Formatter.Number()))
     }
 
     public func opacity(_ value: Double?) -> SVG._Attributes<Self> {
@@ -60,7 +60,7 @@ extension SVG.View {
     }
 
     public func translate(x: Double = 0, y: Double = 0) -> SVG._Attributes<Self> {
-        attribute("transform", "translate(\(x.formatted(.number)), \(y.formatted(.number)))")
+        attribute("transform", "translate(\(x.formatted(Formatter.Number())), \(y.formatted(Formatter.Number())))")
     }
 
     public func rotate(
@@ -71,29 +71,29 @@ extension SVG.View {
         if let cx, let cy {
             return attribute(
                 "transform",
-                "rotate(\(angle.formatted(.number)), \(cx.formatted(.number)), \(cy.formatted(.number)))"
+                "rotate(\(angle.formatted(Formatter.Number())), \(cx.formatted(Formatter.Number())), \(cy.formatted(Formatter.Number())))"
             )
         }
-        return attribute("transform", "rotate(\(angle.formatted(.number)))")
+        return attribute("transform", "rotate(\(angle.formatted(Formatter.Number())))")
     }
 
     public func scale(x: Double, y: Double? = nil) -> SVG._Attributes<Self> {
         if let y {
-            return attribute("transform", "scale(\(x.formatted(.number)), \(y.formatted(.number)))")
+            return attribute("transform", "scale(\(x.formatted(Formatter.Number())), \(y.formatted(Formatter.Number())))")
         }
-        return attribute("transform", "scale(\(x.formatted(.number)))")
+        return attribute("transform", "scale(\(x.formatted(Formatter.Number())))")
     }
 
     public func skewX(
         _ angle: Double
     ) -> SVG._Attributes<Self> {
-        attribute("transform", "skewX(\(angle.formatted(.number)))")
+        attribute("transform", "skewX(\(angle.formatted(Formatter.Number())))")
     }
 
     public func skewY(
         _ angle: Double
     ) -> SVG._Attributes<Self> {
-        attribute("transform", "skewY(\(angle.formatted(.number)))")
+        attribute("transform", "skewY(\(angle.formatted(Formatter.Number())))")
     }
 }
 
@@ -287,7 +287,7 @@ extension SVG.View {
     ) -> SVG._Attributes<Self> {
         attribute(
             "viewBox",
-            "\(minX.formatted(.number)) \(minY.formatted(.number)) \(width.formatted(.number)) \(height.formatted(.number))"
+            "\(minX.formatted(Formatter.Number())) \(minY.formatted(Formatter.Number())) \(width.formatted(Formatter.Number())) \(height.formatted(Formatter.Number()))"
         )
     }
 

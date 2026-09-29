@@ -378,12 +378,6 @@ extension Geometry.Ellipse: SVG.View where Scalar == Double, Space == W3C_SVG.Sp
     }
 }
 
-extension Geometry.Line.Segment: SVG.View where Scalar == Double, Space == W3C_SVG.Space {
-    public var body: some SVG.View {
-        svg
-    }
-}
-
 extension Geometry.Polygon: SVG.View where Scalar == Double, Space == W3C_SVG.Space {
     public var body: some SVG.View {
         svg
