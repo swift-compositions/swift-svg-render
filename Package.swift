@@ -25,7 +25,7 @@ extension Target.Dependency {
         .product(name: "Formatter", package: "swift-formatter")
     }
     static var dimension: Self {
-        .product(name: "Spatial", package: "swift-spatial")
+        .product(name: "Space", package: "swift-spatial")
     }
     static var dictionary: Self {
         .product(name: "Dictionary", package: "swift-dictionary")
@@ -140,7 +140,7 @@ let package = Package(
             dependencies: [
                 .svgRendering,
                 .product(
-                    name: "Spatial Test Support",
+                    name: "Space Test Support",
                     package: "swift-spatial"
                 ),
             ],

@@ -1,5 +1,5 @@
 import Dictionary_Ordered
-import Spatial
+import Space
 import Formatter
 public import Renderer
 
