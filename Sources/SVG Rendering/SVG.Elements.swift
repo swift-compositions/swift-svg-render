@@ -384,6 +384,12 @@ extension Geometry.Polygon: SVG.View where Scalar == Double, Space == W3C_SVG.Sp
     }
 }
 
+extension SVG_Standard.Shapes.Line: SVG.View {
+    public var body: some SVG.View {
+        svg
+    }
+}
+
 extension SVG_Standard.Shapes.Polyline: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
