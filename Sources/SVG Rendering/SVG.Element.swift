@@ -38,19 +38,19 @@ extension SVG {
                     for byte in value.utf8 {
                         switch byte {
                         case ASCII.Character.Graphic.quotationMark:
-                            buffer.append(contentsOf: [UInt8].svg.doubleQuotationMark)
+                            buffer.append(contentsOf: [UInt8].SVG.doubleQuotationMark)
 
                         case ASCII.Character.Graphic.apostrophe:
-                            buffer.append(contentsOf: [UInt8].svg.apostrophe)
+                            buffer.append(contentsOf: [UInt8].SVG.apostrophe)
 
                         case ASCII.Character.Graphic.ampersand:
-                            buffer.append(contentsOf: [UInt8].svg.ampersand)
+                            buffer.append(contentsOf: [UInt8].SVG.ampersand)
 
                         case ASCII.Character.Graphic.lessThanSign:
-                            buffer.append(contentsOf: [UInt8].svg.lessThan)
+                            buffer.append(contentsOf: [UInt8].SVG.lessThan)
 
                         case ASCII.Character.Graphic.greaterThanSign:
-                            buffer.append(contentsOf: [UInt8].svg.greaterThan)
+                            buffer.append(contentsOf: [UInt8].SVG.greaterThan)
 
                         default:
                             buffer.append(byte)
@@ -92,10 +92,10 @@ extension SVG.Element: Sendable where Content: Sendable {}
 
 extension [UInt8] {
 
-    public enum svg {}
+    public enum SVG {}
 }
 
-extension [UInt8].svg {
+extension [UInt8].SVG {
 
     public static let doubleQuotationMark: [UInt8] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.q, ASCII.Character.Graphic.u,
