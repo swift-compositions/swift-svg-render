@@ -1,3 +1,4 @@
+public import Byte
 import Dictionary_Ordered
 import Formatter
 public import Renderer
@@ -14,7 +15,7 @@ extension SVG {
             _ svg: Self,
             into buffer: inout Buffer,
             context: inout SVG.Context
-        ) where Buffer.Element == UInt8
+        ) where Buffer.Element == Byte
     }
 }
 
@@ -25,7 +26,7 @@ extension SVG.View where Content: SVG.View {
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         Content._render(svg.body, into: &buffer, context: &context)
     }
 }

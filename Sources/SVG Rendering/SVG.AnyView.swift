@@ -1,3 +1,5 @@
+public import Byte
+
 extension SVG {
     public struct AnyView: SVG.View {
         let base: any SVG.View
@@ -13,7 +15,7 @@ extension SVG.AnyView {
         _ svg: SVG.AnyView,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         func render<T: SVG.View>(_ element: T) {
             T._render(element, into: &buffer, context: &context)
         }

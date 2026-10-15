@@ -1,3 +1,4 @@
+public import Byte
 public import Dictionary_Ordered
 import Renderer
 
@@ -15,7 +16,7 @@ extension SVG {
             _ svg: Self,
             into buffer: inout Buffer,
             context: inout SVG.Context
-        ) where Buffer.Element == UInt8 {
+        ) where Buffer.Element == Byte {
             let previousValue = context.attributes
             defer { context.attributes = previousValue }
             svg.attributes.forEach { key, value in

@@ -1,3 +1,4 @@
+public import Byte
 public import Renderer
 
 extension Renderer.Document.Conditional: SVG.View where First: SVG.View, Second: SVG.View {
@@ -7,7 +8,7 @@ extension Renderer.Document.Conditional: SVG.View where First: SVG.View, Second:
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         switch svg {
         case .first(let first): First._render(first, into: &buffer, context: &context)
         case .second(let second): Second._render(second, into: &buffer, context: &context)

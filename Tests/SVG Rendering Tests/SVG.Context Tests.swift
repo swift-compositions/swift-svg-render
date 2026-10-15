@@ -1,3 +1,4 @@
+import Byte
 import Dictionary_Ordered
 import SVG_Rendering_Test_Support
 import Testing
@@ -58,8 +59,8 @@ extension SVG.Context {
                     newline: "\r\n"
                 )
                 let context = SVG.Context(config)
-                #expect(context.configuration.indentation == Array("\t".utf8))
-                #expect(context.configuration.newline == Array("\r\n".utf8))
+                #expect(context.configuration.indentation == [Byte](utf8: "\t"))
+                #expect(context.configuration.newline == [Byte](utf8: "\r\n"))
             }
         }
     }

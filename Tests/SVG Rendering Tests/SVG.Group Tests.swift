@@ -1,10 +1,11 @@
+import Byte
 import SVG_Rendering_Test_Support
 import Testing
 
 enum SVGGroupTests {
 
     static func render(_ view: some SVG.View) -> String {
-        String(decoding: [UInt8](view), as: UTF8.self)
+        String(decoding: [Byte](view), as: UTF8.self)
     }
 
     @Suite struct Test {

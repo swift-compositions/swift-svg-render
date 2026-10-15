@@ -1,4 +1,5 @@
 import ASCII
+public import Byte
 import Dictionary_Ordered
 
 extension SVG {
@@ -18,7 +19,7 @@ extension SVG {
             _ svg: Self,
             into buffer: inout Buffer,
             context: inout SVG.Context
-        ) where Buffer.Element == UInt8 {
+        ) where Buffer.Element == Byte {
 
             if !context.currentIndentation.isEmpty {
                 buffer.append(contentsOf: context.configuration.newline)
@@ -26,31 +27,31 @@ extension SVG {
             buffer.append(contentsOf: context.currentIndentation)
 
             buffer.append(ASCII.Character.Graphic.lessThanSign)
-            buffer.append(contentsOf: svg.tag.utf8)
+            buffer.append(contentsOf: svg.tag.utf8.lazy.map(Byte.init(bitPattern:)))
 
             context.attributes.forEach { name, value in
                 buffer.append(ASCII.SPACE.sp)
-                buffer.append(contentsOf: name.utf8)
+                buffer.append(contentsOf: name.utf8.lazy.map(Byte.init(bitPattern:)))
                 if !value.isEmpty {
                     buffer.append(ASCII.Character.Graphic.equalsSign)
                     buffer.append(ASCII.Character.Graphic.quotationMark)
 
-                    for byte in value.utf8 {
+                    for byte in value.utf8.lazy.map(Byte.init(bitPattern:)) {
                         switch byte {
                         case ASCII.Character.Graphic.quotationMark:
-                            buffer.append(contentsOf: [UInt8].SVG.doubleQuotationMark)
+                            buffer.append(contentsOf: [Byte].SVG.doubleQuotationMark)
 
                         case ASCII.Character.Graphic.apostrophe:
-                            buffer.append(contentsOf: [UInt8].SVG.apostrophe)
+                            buffer.append(contentsOf: [Byte].SVG.apostrophe)
 
                         case ASCII.Character.Graphic.ampersand:
-                            buffer.append(contentsOf: [UInt8].SVG.ampersand)
+                            buffer.append(contentsOf: [Byte].SVG.ampersand)
 
                         case ASCII.Character.Graphic.lessThanSign:
-                            buffer.append(contentsOf: [UInt8].SVG.lessThan)
+                            buffer.append(contentsOf: [Byte].SVG.lessThan)
 
                         case ASCII.Character.Graphic.greaterThanSign:
-                            buffer.append(contentsOf: [UInt8].SVG.greaterThan)
+                            buffer.append(contentsOf: [Byte].SVG.greaterThan)
 
                         default:
                             buffer.append(byte)
@@ -78,7 +79,7 @@ extension SVG {
             buffer.append(contentsOf: context.currentIndentation)
             buffer.append(ASCII.Character.Graphic.lessThanSign)
             buffer.append(ASCII.Character.Graphic.slant)
-            buffer.append(contentsOf: svg.tag.utf8)
+            buffer.append(contentsOf: svg.tag.utf8.lazy.map(Byte.init(bitPattern:)))
             buffer.append(ASCII.Character.Graphic.greaterThanSign)
         }
 
@@ -90,34 +91,34 @@ extension SVG {
 
 extension SVG.Element: Sendable where Content: Sendable {}
 
-extension [UInt8] {
+extension [Byte] {
 
     public enum SVG {}
 }
 
-extension [UInt8].SVG {
+extension [Byte].SVG {
 
-    public static let doubleQuotationMark: [UInt8] = [
+    public static let doubleQuotationMark: [Byte] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.q, ASCII.Character.Graphic.u,
         ASCII.Character.Graphic.o, ASCII.Character.Graphic.t, ASCII.Character.Graphic.semicolon,
     ]
 
-    public static let apostrophe: [UInt8] = [
+    public static let apostrophe: [Byte] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.a, ASCII.Character.Graphic.p,
         ASCII.Character.Graphic.o, ASCII.Character.Graphic.s, ASCII.Character.Graphic.semicolon,
     ]
 
-    public static let ampersand: [UInt8] = [
+    public static let ampersand: [Byte] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.a, ASCII.Character.Graphic.m,
         ASCII.Character.Graphic.p, ASCII.Character.Graphic.semicolon,
     ]
 
-    public static let lessThan: [UInt8] = [
+    public static let lessThan: [Byte] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.l, ASCII.Character.Graphic.t,
         ASCII.Character.Graphic.semicolon,
     ]
 
-    public static let greaterThan: [UInt8] = [
+    public static let greaterThan: [Byte] = [
         ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.g, ASCII.Character.Graphic.t,
         ASCII.Character.Graphic.semicolon,
     ]

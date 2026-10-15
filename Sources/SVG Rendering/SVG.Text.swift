@@ -1,4 +1,5 @@
 import ASCII
+public import Byte
 
 extension SVG {
     public struct Text: SVG.View {
@@ -17,24 +18,24 @@ extension SVG.Text {
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         buffer.reserveCapacity(buffer.count + svg.text.utf8.count)
-        for byte in svg.text.utf8 {
+        for byte in svg.text.utf8.lazy.map(Byte.init(bitPattern:)) {
             switch byte {
-            case ASCII.Character.Graphic.ampersand:
-                buffer.append(contentsOf: "&amp;".utf8)
+            case .ascii.ampersand:
+                buffer.append(contentsOf: "&amp;".utf8.lazy.map(Byte.init(bitPattern:)))
 
-            case ASCII.Character.Graphic.lessThanSign:
-                buffer.append(contentsOf: "&lt;".utf8)
+            case .ascii.lessThanSign:
+                buffer.append(contentsOf: "&lt;".utf8.lazy.map(Byte.init(bitPattern:)))
 
-            case ASCII.Character.Graphic.greaterThanSign:
-                buffer.append(contentsOf: "&gt;".utf8)
+            case .ascii.greaterThanSign:
+                buffer.append(contentsOf: "&gt;".utf8.lazy.map(Byte.init(bitPattern:)))
 
-            case ASCII.Character.Graphic.quotationMark:
-                buffer.append(contentsOf: "&quot;".utf8)
+            case .ascii.dquote:
+                buffer.append(contentsOf: "&quot;".utf8.lazy.map(Byte.init(bitPattern:)))
 
-            case ASCII.Character.Graphic.apostrophe:
-                buffer.append(contentsOf: "&apos;".utf8)
+            case .ascii.apostrophe:
+                buffer.append(contentsOf: "&apos;".utf8.lazy.map(Byte.init(bitPattern:)))
 
             default:
                 buffer.append(byte)

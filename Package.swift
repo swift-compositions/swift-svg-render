@@ -59,6 +59,7 @@ let package = Package(
         .library(name: "SVG Rendering Test Support", targets: ["SVG Rendering Test Support"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/swift-atoms/swift-byte.git", branch: "main"),
         .package(
             url: "https://github.com/swift-atoms/swift-renderer.git",
             branch: "main",
@@ -110,6 +111,7 @@ let package = Package(
         .target(
             name: "SVG Rendering",
             dependencies: [
+                .product(name: "Byte", package: "swift-byte"),
                 .rendering,
                 .svgStandard,
                 .ascii,
@@ -153,6 +155,7 @@ let package = Package(
         .testTarget(
             name: "SVG Rendering Tests",
             dependencies: [
+                .product(name: "Byte", package: "swift-byte"),
                 .svgRendering,
                 "SVG Rendering Test Support",
             ],

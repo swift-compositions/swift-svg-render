@@ -1,3 +1,4 @@
+public import Byte
 public import Renderer
 
 extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View {
@@ -7,7 +8,7 @@ extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         func render<T: SVG.View>(_ element: T) {
             let oldAttributes = context.attributes
             defer { context.attributes = oldAttributes }

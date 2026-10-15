@@ -1,3 +1,4 @@
+import Byte
 import SVG_Rendering_Test_Support
 import Testing
 
@@ -8,14 +9,14 @@ extension SVG.Empty {
             @Test
             func `renders to empty bytes`() {
                 let empty = SVG.Empty()
-                let bytes = [UInt8](empty)
+                let bytes = [Byte](empty)
                 #expect(bytes.isEmpty)
             }
 
             @Test
             func `String representation is empty`() {
                 let empty = SVG.Empty()
-                let string = String(decoding: [UInt8](empty), as: UTF8.self)
+                let string = String(decoding: [Byte](empty), as: UTF8.self)
                 #expect(string.isEmpty)
             }
         }
@@ -29,7 +30,7 @@ extension SVG.Empty {
                     SVG.Empty()
                     SVG.Empty()
                 }
-                let bytes = [UInt8](group)
+                let bytes = [Byte](group)
                 #expect(bytes.isEmpty)
             }
         }

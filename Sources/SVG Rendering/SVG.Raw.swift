@@ -1,3 +1,5 @@
+public import Byte
+
 extension SVG {
     public struct Raw: SVG.View {
 
@@ -15,8 +17,8 @@ extension SVG.Raw {
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
-        buffer.append(contentsOf: svg.content.utf8)
+    ) where Buffer.Element == Byte {
+        buffer.append(contentsOf: svg.content.utf8.lazy.map(Byte.init(bitPattern:)))
     }
 
     public var body: Never { fatalError("body should not be called") }

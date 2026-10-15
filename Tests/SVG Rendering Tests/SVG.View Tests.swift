@@ -1,10 +1,11 @@
+import Byte
 import SVG_Rendering_Test_Support
 import Testing
 
 enum SVGViewTests {
 
     static func render(_ view: some SVG.View) -> String {
-        String(decoding: [UInt8](view), as: UTF8.self)
+        String(decoding: [Byte](view), as: UTF8.self)
     }
 
     @Suite struct Test {
@@ -13,7 +14,7 @@ enum SVGViewTests {
             @Test
             func `Optional none renders empty`() {
                 let view: SVG.Text? = nil
-                let bytes = [UInt8](view)
+                let bytes = [Byte](view)
                 #expect(bytes.isEmpty)
             }
 
@@ -52,7 +53,7 @@ enum SVGViewTests {
             @Test
             func `empty array renders nothing`() {
                 let views: [SVG.Text] = []
-                let bytes = [UInt8](views)
+                let bytes = [Byte](views)
                 #expect(bytes.isEmpty)
             }
 

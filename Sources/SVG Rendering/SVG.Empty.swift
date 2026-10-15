@@ -1,3 +1,5 @@
+public import Byte
+
 extension SVG {
     public struct Empty: SVG.View {
 
@@ -11,7 +13,7 @@ extension SVG.Empty {
         _ svg: Self,
         into buffer: inout Buffer,
         context: inout SVG.Context
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
 
     }
 

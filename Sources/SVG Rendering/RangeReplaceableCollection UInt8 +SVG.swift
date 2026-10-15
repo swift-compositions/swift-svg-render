@@ -1,6 +1,7 @@
+public import Byte
 import Renderer
 
-extension RangeReplaceableCollection<UInt8> {
+extension RangeReplaceableCollection<Byte> {
 
     @inlinable
     public init<View: SVG.View>(
@@ -14,7 +15,7 @@ extension RangeReplaceableCollection<UInt8> {
     }
 }
 
-extension RangeReplaceableCollection<UInt8> {
+extension RangeReplaceableCollection<Byte> {
 
     @inlinable
     public init<View: SVG.View>(

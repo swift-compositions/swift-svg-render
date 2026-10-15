@@ -1,3 +1,4 @@
+import Byte
 import Testing
 
 @testable import SVG_Rendering
@@ -11,13 +12,13 @@ extension SVG.Test.Performance {
     @Test(.timed(iterations: 1000, warmup: 100))
     func `render short text`() {
         let text = SVG.Text("Hello World")
-        let _ = [UInt8](text)
+        let _ = [Byte](text)
     }
 
     @Test(.timed(iterations: 500, warmup: 50))
     func `render text with escaping`() {
         let text = SVG.Text("<script>alert('xss')</script> & \"more\"")
-        let _ = [UInt8](text)
+        let _ = [Byte](text)
     }
 
     @Test(.timed(iterations: 100, warmup: 10))
@@ -27,7 +28,7 @@ extension SVG.Test.Performance {
             count: 50
         )
         let text = SVG.Text(content)
-        let _ = [UInt8](text)
+        let _ = [Byte](text)
     }
 }
 
@@ -36,7 +37,7 @@ extension SVG.Test.Performance {
     @Test(.timed(iterations: 500, warmup: 50))
     func `render element with no attributes`() {
         let element = SVG.Element(tag: "circle") { SVG.Empty() }
-        let _ = [UInt8](element)
+        let _ = [Byte](element)
     }
 
     @Test(.timed(iterations: 500, warmup: 50))
@@ -50,7 +51,7 @@ extension SVG.Test.Performance {
             .fill("red")
             .stroke("black")
             .strokeWidth(2)
-        let _ = [UInt8](styled)
+        let _ = [Byte](styled)
     }
 
     @Test(.timed(iterations: 200, warmup: 20))
@@ -64,7 +65,7 @@ extension SVG.Test.Performance {
             }
         }
         let svg = SVG.Element(tag: "svg") { g }
-        let _ = [UInt8](svg)
+        let _ = [Byte](svg)
     }
 }
 
@@ -99,7 +100,7 @@ extension SVG.Test.Performance {
             .strokeWidth(2)
             .fillOpacity(0.8)
             .strokeLinecap("round")
-        let _ = [UInt8](styled)
+        let _ = [Byte](styled)
     }
 }
 
@@ -112,7 +113,7 @@ extension SVG.Test.Performance {
                 SVG.Element(tag: "circle") { SVG.Empty() }
             }
         }
-        let _ = [UInt8](group)
+        let _ = [Byte](group)
     }
 
     @Test(.timed(iterations: 20, warmup: 5))
@@ -122,7 +123,7 @@ extension SVG.Test.Performance {
                 SVG.Element(tag: "rect") { SVG.Empty() }
             }
         }
-        let _ = [UInt8](group)
+        let _ = [Byte](group)
     }
 
     @Test(.timed(iterations: 50, warmup: 5))
@@ -132,7 +133,7 @@ extension SVG.Test.Performance {
                 SVG.Element(tag: "circle") { SVG.Empty() }
             }
         }
-        let bytes = [UInt8](group)
+        let bytes = [Byte](group)
         let _ = String(decoding: bytes, as: UTF8.self)
     }
 }
@@ -148,6 +149,6 @@ extension SVG.Test.Performance {
         }
         let g = SVG.Element(tag: "g") { circles }
         let svg = SVG.Element(tag: "svg") { g }
-        let _ = [UInt8](svg, configuration: .pretty)
+        let _ = [Byte](svg, configuration: .pretty)
     }
 }

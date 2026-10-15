@@ -1,3 +1,4 @@
+public import Byte
 public import Dictionary_Ordered
 import Renderer
 
@@ -8,7 +9,7 @@ extension SVG {
 
         public let configuration: SVG.Context.Configuration
 
-        public var currentIndentation: [UInt8]
+        public var currentIndentation: [Byte]
     }
 }
 
@@ -22,12 +23,12 @@ extension SVG.Context {
 
 extension SVG.Context {
     public struct Configuration: Sendable {
-        public var indentation: [UInt8]
-        public var newline: [UInt8]
+        public var indentation: [Byte]
+        public var newline: [Byte]
 
         public init(indentation: String = "", newline: String = "") {
-            self.indentation = Array(indentation.utf8)
-            self.newline = Array(newline.utf8)
+            self.indentation = [Byte](utf8: indentation)
+            self.newline = [Byte](utf8: newline)
         }
     }
 }
@@ -41,7 +42,7 @@ extension SVG.Context {
     @inlinable
     public func appendNewline<Buffer: RangeReplaceableCollection>(
         into buffer: inout Buffer
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         if !configuration.newline.isEmpty {
             buffer.append(contentsOf: configuration.newline)
         }
@@ -66,7 +67,7 @@ extension SVG.Context {
     @inlinable
     public func appendIndentation<Buffer: RangeReplaceableCollection>(
         into buffer: inout Buffer
-    ) where Buffer.Element == UInt8 {
+    ) where Buffer.Element == Byte {
         if !configuration.indentation.isEmpty && !currentIndentation.isEmpty {
             buffer.append(contentsOf: currentIndentation)
         }
