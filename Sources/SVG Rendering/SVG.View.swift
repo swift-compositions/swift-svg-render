@@ -1,7 +1,7 @@
 import Dictionary_Ordered
-import Space
 import Formatter
 public import Renderer
+import Space
 
 public enum SVG {}
 

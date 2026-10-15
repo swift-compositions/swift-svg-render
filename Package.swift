@@ -61,11 +61,15 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/swift-atoms/swift-renderer.git",
-            branch: "main", traits: ["Document"]),
+            branch: "main",
+            traits: ["Document"]
+        ),
         .package(url: "https://github.com/swift-standards/swift-svg-standard.git", branch: "main"),
         .package(
             url: "https://github.com/swift-atoms/swift-formatter.git",
-            branch: "main", traits: ["Number", "Conversions", "Tagged"]),
+            branch: "main",
+            traits: ["Number", "Conversions", "Tagged"]
+        ),
         .package(
             url: "https://github.com/swift-atoms/swift-spatial.git",
             branch: "main"
@@ -147,7 +151,7 @@ let package = Package(
             path: "Tests/Support"
         ),
         .testTarget(
-            name: .svgRendering.tests,
+            name: "SVG Rendering Tests",
             dependencies: [
                 .svgRendering,
                 "SVG Rendering Test Support",
