@@ -108,7 +108,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: .svgRendering,
+            name: "SVG Rendering",
             dependencies: [
                 .rendering,
                 .svgStandard,
