@@ -26,31 +26,31 @@ extension SVG {
             }
             buffer.append(contentsOf: context.currentIndentation)
 
-            buffer.append(ASCII.Character.Graphic.lessThanSign)
+            buffer.append(Byte(bitPattern: ASCII.Character.Graphic.lessThanSign))
             buffer.append(contentsOf: svg.tag.utf8.lazy.map(Byte.init(bitPattern:)))
 
             context.attributes.forEach { name, value in
-                buffer.append(ASCII.SPACE.sp)
+                buffer.append(Byte(bitPattern: ASCII.SPACE.sp))
                 buffer.append(contentsOf: name.utf8.lazy.map(Byte.init(bitPattern:)))
                 if !value.isEmpty {
-                    buffer.append(ASCII.Character.Graphic.equalsSign)
-                    buffer.append(ASCII.Character.Graphic.quotationMark)
+                    buffer.append(Byte(bitPattern: ASCII.Character.Graphic.equalsSign))
+                    buffer.append(Byte(bitPattern: ASCII.Character.Graphic.quotationMark))
 
                     for byte in value.utf8.lazy.map(Byte.init(bitPattern:)) {
                         switch byte {
-                        case ASCII.Character.Graphic.quotationMark:
+                        case Byte(bitPattern: ASCII.Character.Graphic.quotationMark):
                             buffer.append(contentsOf: [Byte].SVG.doubleQuotationMark)
 
-                        case ASCII.Character.Graphic.apostrophe:
+                        case Byte(bitPattern: ASCII.Character.Graphic.apostrophe):
                             buffer.append(contentsOf: [Byte].SVG.apostrophe)
 
-                        case ASCII.Character.Graphic.ampersand:
+                        case Byte(bitPattern: ASCII.Character.Graphic.ampersand):
                             buffer.append(contentsOf: [Byte].SVG.ampersand)
 
-                        case ASCII.Character.Graphic.lessThanSign:
+                        case Byte(bitPattern: ASCII.Character.Graphic.lessThanSign):
                             buffer.append(contentsOf: [Byte].SVG.lessThan)
 
-                        case ASCII.Character.Graphic.greaterThanSign:
+                        case Byte(bitPattern: ASCII.Character.Graphic.greaterThanSign):
                             buffer.append(contentsOf: [Byte].SVG.greaterThan)
 
                         default:
@@ -58,10 +58,10 @@ extension SVG {
                         }
                     }
 
-                    buffer.append(ASCII.Character.Graphic.quotationMark)
+                    buffer.append(Byte(bitPattern: ASCII.Character.Graphic.quotationMark))
                 }
             }
-            buffer.append(ASCII.Character.Graphic.greaterThanSign)
+            buffer.append(Byte(bitPattern: ASCII.Character.Graphic.greaterThanSign))
 
             if let content = svg.content {
                 let oldAttributes = context.attributes
@@ -77,10 +77,10 @@ extension SVG {
 
             buffer.append(contentsOf: context.configuration.newline)
             buffer.append(contentsOf: context.currentIndentation)
-            buffer.append(ASCII.Character.Graphic.lessThanSign)
-            buffer.append(ASCII.Character.Graphic.slant)
+            buffer.append(Byte(bitPattern: ASCII.Character.Graphic.lessThanSign))
+            buffer.append(Byte(bitPattern: ASCII.Character.Graphic.slant))
             buffer.append(contentsOf: svg.tag.utf8.lazy.map(Byte.init(bitPattern:)))
-            buffer.append(ASCII.Character.Graphic.greaterThanSign)
+            buffer.append(Byte(bitPattern: ASCII.Character.Graphic.greaterThanSign))
         }
 
         public var body: Never {
@@ -99,27 +99,42 @@ extension [Byte] {
 extension [Byte].SVG {
 
     public static let doubleQuotationMark: [Byte] = [
-        ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.q, ASCII.Character.Graphic.u,
-        ASCII.Character.Graphic.o, ASCII.Character.Graphic.t, ASCII.Character.Graphic.semicolon,
+        Byte(bitPattern: ASCII.Character.Graphic.ampersand),
+        Byte(bitPattern: ASCII.Character.Graphic.q),
+        Byte(bitPattern: ASCII.Character.Graphic.u),
+        Byte(bitPattern: ASCII.Character.Graphic.o),
+        Byte(bitPattern: ASCII.Character.Graphic.t),
+        Byte(bitPattern: ASCII.Character.Graphic.semicolon),
     ]
 
     public static let apostrophe: [Byte] = [
-        ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.a, ASCII.Character.Graphic.p,
-        ASCII.Character.Graphic.o, ASCII.Character.Graphic.s, ASCII.Character.Graphic.semicolon,
+        Byte(bitPattern: ASCII.Character.Graphic.ampersand),
+        Byte(bitPattern: ASCII.Character.Graphic.a),
+        Byte(bitPattern: ASCII.Character.Graphic.p),
+        Byte(bitPattern: ASCII.Character.Graphic.o),
+        Byte(bitPattern: ASCII.Character.Graphic.s),
+        Byte(bitPattern: ASCII.Character.Graphic.semicolon),
     ]
 
     public static let ampersand: [Byte] = [
-        ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.a, ASCII.Character.Graphic.m,
-        ASCII.Character.Graphic.p, ASCII.Character.Graphic.semicolon,
+        Byte(bitPattern: ASCII.Character.Graphic.ampersand),
+        Byte(bitPattern: ASCII.Character.Graphic.a),
+        Byte(bitPattern: ASCII.Character.Graphic.m),
+        Byte(bitPattern: ASCII.Character.Graphic.p),
+        Byte(bitPattern: ASCII.Character.Graphic.semicolon),
     ]
 
     public static let lessThan: [Byte] = [
-        ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.l, ASCII.Character.Graphic.t,
-        ASCII.Character.Graphic.semicolon,
+        Byte(bitPattern: ASCII.Character.Graphic.ampersand),
+        Byte(bitPattern: ASCII.Character.Graphic.l),
+        Byte(bitPattern: ASCII.Character.Graphic.t),
+        Byte(bitPattern: ASCII.Character.Graphic.semicolon),
     ]
 
     public static let greaterThan: [Byte] = [
-        ASCII.Character.Graphic.ampersand, ASCII.Character.Graphic.g, ASCII.Character.Graphic.t,
-        ASCII.Character.Graphic.semicolon,
+        Byte(bitPattern: ASCII.Character.Graphic.ampersand),
+        Byte(bitPattern: ASCII.Character.Graphic.g),
+        Byte(bitPattern: ASCII.Character.Graphic.t),
+        Byte(bitPattern: ASCII.Character.Graphic.semicolon),
     ]
 }

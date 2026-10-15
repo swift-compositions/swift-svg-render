@@ -39,6 +39,16 @@ enum SVGElementTests {
         @Suite struct EdgeCase {
 
             @Test
+            func `attributes escape markup and preserve Unicode bytes`() {
+                let element = SVG.Element(tag: "g") { SVG.Empty() }.fill("\"'&<>é🙂")
+                let bytes = [Byte](element)
+                #expect(
+                    bytes.map(\.bitPattern)
+                        == Array("<g fill=\"&quot;&apos;&amp;&lt;&gt;é🙂\"></g>".utf8)
+                )
+            }
+
+            @Test
             func `nested elements render correctly`() {
                 let inner = SVG.Element(tag: "circle") { SVG.Empty() }
                 let styled = inner.fill("red")
