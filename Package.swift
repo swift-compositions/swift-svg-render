@@ -25,7 +25,7 @@ extension Target.Dependency {
         .product(name: "Formatter", package: "swift-formatter")
     }
     static var dimension: Self {
-        .product(name: "Space", package: "swift-spatial")
+        .product(name: "Space", package: "swift-space")
     }
     static var dictionary: Self {
         .product(name: "Dictionary", package: "swift-dictionary")
@@ -72,7 +72,7 @@ let package = Package(
             traits: ["Number", "Conversions", "Tagged"]
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-spatial.git",
+            url: "https://github.com/swift-atoms/swift-space.git",
             branch: "main"
         ),
         .package(
@@ -147,7 +147,7 @@ let package = Package(
                 .svgRendering,
                 .product(
                     name: "Space Test Support",
-                    package: "swift-spatial"
+                    package: "swift-space"
                 ),
             ],
             path: "Tests/Support"
