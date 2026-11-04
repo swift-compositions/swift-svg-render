@@ -1,92 +1,14 @@
 # swift-svg-render
 
-![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
+Use this package when you write SVG markup from Swift with a result builder and render it to bytes or a string. Start from `SVG.View`: build elements with `SVG.Element`, text with `SVG.Text`, and set attributes with modifiers. Render into any byte collection, or into a string with an optional `SVG.Context.Configuration`. If you want lowercase element builders named after SVG tags and one import for the W3C SVG model, use swift-svg. If you only need the SVG element and value types, use swift-svg-standard.
 
-Renders SVG documents to UTF-8 bytes or strings through a declarative result-builder DSL over W3C SVG Standard types.
+## Laws
 
----
-
-## Key Features
-
-- **Result-builder DSL** — compose documents from `SVG.View` values inside `@SVG.Builder` closures.
-- **W3C SVG Standard types** — shapes, paths, gradients, patterns, masks, markers, text, and document elements render directly via `callAsFunction`.
-- **Byte-oriented rendering** — render into any `RangeReplaceableCollection<UInt8>` with `[UInt8](view)`, or to a `String` with `String(view)`.
-- **Automatic XML escaping** — text content and attribute values escape `&`, `<`, `>`, `"`, and `'`.
-- **Attribute modifiers** — chain presentation, transform, text, and geometry attributes (`fill`, `stroke`, `transform`, `fontSize`, …).
-- **Geometry integration** — `Geometry` / `W3C_SVG2` types conform to `SVG.View` and expose `.svg` for SVG transforms (`translated`, `scaled`, `rotated`).
-- **Async rendering** — `await String(view)` and `await [UInt8](view)` yield to the scheduler for large documents.
-
----
-
-## Quick Start
-
-Compose a document from W3C SVG Standard types and render it to markup:
-
-```swift
-import SVG_Rendering
-import SVG_Standard
-
-let document = SVG_Standard.Document.SVG(
-    width: .number(200),
-    height: .number(200),
-    viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 200, height: 200)
-) {
-    SVG_Standard.Shapes.Circle(cx: 100, cy: 100, r: 50)()
-        .fill("blue")
-        .stroke("black")
-        .strokeWidth(2)
-    SVG_Standard.Shapes.Rectangle(x: 25, y: 25, width: 50, height: 50)()
-        .fill("red")
-}
-
-let markup = String(document)
-// <svg viewBox="0 0 200 200" height="200" width="200"><circle stroke-width="2" stroke="black" fill="blue" r="50" cy="100" cx="100"></circle><rect fill="red" height="50" width="50" y="25" x="25"></rect></svg>
-```
-
-`SVG.Text` escapes special characters, while `SVG.Raw` emits markup verbatim, and `SVG.Group` composes fragments without introducing an enclosing element.
-
----
-
-## Installation
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/swift-compositions/swift-svg-render.git", branch: "main")
-]
-```
-
-```swift
-.target(
-    name: "YourTarget",
-    dependencies: [
-        .product(name: "SVG Rendering", package: "swift-svg-render"),
-    ]
-)
-```
-
-Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26.
-
----
-
-## Architecture
-
-Two library products.
-
-| Product | Module | Purpose |
-|---------|--------|---------|
-| `SVG Rendering` | `SVG_Rendering` | The `SVG` namespace, the `SVG.View` DSL and `SVG.Builder`, attribute modifiers, byte/string rendering, and the `callAsFunction` / `SVG.View` conformances that render W3C SVG Standard element types. |
-| `SVG Rendering Test Support` | `SVG_Rendering_Test_Support` | Re-exports for test consumers, including the SVG snapshot strategy. |
-
-Importing `SVG Rendering` re-exports `SVG Standard`, `Render`, `Format`, `ASCII`, and `Dictionary`, so the element types and the result builder are available from the single import.
-
----
-
-## Community
-
-<!-- BEGIN: discussion -->
-*Discussion thread will be created at first public release.*
-<!-- END: discussion -->
-
-## License
-
-Apache 2.0. See [LICENSE](LICENSE.md).
+- Output is compact by default, with no newlines or indentation. `SVG.Context.Configuration.pretty` puts each nested element on its own line and indents it by two spaces per level.
+- Every element is written with an opening and a closing tag, even when it has no content. Elements are never self-closing.
+- Attribute values and `SVG.Text` escape the quotation mark, apostrophe, ampersand and both angle brackets as entities. Every other character, non-ASCII included, is written as UTF-8 unchanged. A `String` renders as `SVG.Text`.
+- `SVG.Raw` writes its content verbatim, with no escaping.
+- An attribute modifier given nil leaves the attribute out. `SVG.View.attribute(_:_:)` with no value writes the bare attribute name.
+- Numeric attribute values are formatted without a trailing fraction, so a width of 2 is written as `2`.
+- A modifier applies to the elements it wraps. On a group it applies to each top-level element in the group. It never passes into an element's children.
+- `SVG.Empty`, a nil `Optional`, an empty `Array` and an empty group render nothing. Groups add no element of their own.
