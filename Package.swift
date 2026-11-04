@@ -2,49 +2,6 @@
 
 import PackageDescription
 
-extension String {
-    static let svgRendering: Self = "SVG Rendering"
-    var tests: Self { self + " Tests" }
-}
-
-extension Target.Dependency {
-    static var svgRendering: Self { .target(name: .svgRendering) }
-}
-
-extension Target.Dependency {
-    static var rendering: Self {
-        .product(name: "Renderer", package: "swift-renderer")
-    }
-    static var svgStandard: Self {
-        .product(name: "SVG Standard", package: "swift-svg-standard")
-    }
-    static var ascii: Self {
-        .product(name: "ASCII", package: "swift-ascii")
-    }
-    static var formatting: Self {
-        .product(name: "Formatter", package: "swift-formatter")
-    }
-    static var dimension: Self {
-        .product(name: "Space", package: "swift-space")
-    }
-    static var dictionary: Self {
-        .product(name: "Dictionary", package: "swift-dictionary")
-    }
-    static var sharedPrimitive: Self {
-        .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared")
-    }
-    static var hashIndexedPrimitive: Self {
-        .product(name: "Hash Indexed Primitive", package: "swift-hash-table")
-    }
-
-    static var hashTablePrimitive: Self {
-        .product(name: "Hash Table Primitive", package: "swift-hash-table")
-    }
-    static var bufferLinearPrimitive: Self {
-        .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear")
-    }
-}
-
 let package = Package(
     name: "swift-svg-render",
     platforms: [
@@ -55,7 +12,7 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        .library(name: .svgRendering, targets: [.svgRendering]),
+        .library(name: "SVG Rendering", targets: ["SVG Rendering"]),
         .library(name: "SVG Rendering Test Support", targets: ["SVG Rendering Test Support"]),
     ],
     dependencies: [
@@ -112,39 +69,36 @@ let package = Package(
             name: "SVG Rendering",
             dependencies: [
                 .product(name: "Byte", package: "swift-byte"),
-                .rendering,
-                .svgStandard,
-                .ascii,
-                .formatting,
-                .dimension,
-                .dictionary,
+                .product(name: "Renderer", package: "swift-renderer"),
+                .product(name: "SVG Standard", package: "swift-svg-standard"),
+                .product(name: "ASCII", package: "swift-ascii"),
+                .product(name: "Formatter", package: "swift-formatter"),
+                .product(name: "Space", package: "swift-space"),
+                .product(name: "Dictionary", package: "swift-dictionary"),
                 .product(
                     name: "Dictionary Ordered",
                     package: "swift-dictionary-ordered"
                 ),
-                .sharedPrimitive,
-                .hashIndexedPrimitive,
-                .hashTablePrimitive,
-                .bufferLinearPrimitive,
-                .product(name: "Buffer", package: "swift-buffer"),
+                .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared"),
+                .product(name: "Hash Indexed Primitive", package: "swift-hash-table"),
+                .product(name: "Hash Table Primitive", package: "swift-hash-table"),
                 .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear"),
+                .product(name: "Buffer", package: "swift-buffer"),
                 .product(name: "Buffer Linear Bounded Primitive", package: "swift-buffer-linear"),
                 .product(name: "Buffer Ring Primitive", package: "swift-buffer-ring"),
                 .product(name: "Memory Allocator Pool", package: "swift-memory-allocation"),
                 .product(name: "Memory Pool", package: "swift-memory-allocation"),
                 .product(name: "Memory Allocator", package: "swift-memory-allocation"),
                 .product(name: "Memory", package: "swift-memory"),
-                .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared"),
                 .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Store", package: "swift-store"),
                 .product(name: "Geometry", package: "swift-geometry"),
-                .product(name: "SVG Standard", package: "swift-svg-standard"),
             ]
         ),
         .target(
             name: "SVG Rendering Test Support",
             dependencies: [
-                .svgRendering,
+                .target(name: "SVG Rendering"),
                 .product(
                     name: "Space Test Support",
                     package: "swift-space"
@@ -156,7 +110,7 @@ let package = Package(
             name: "SVG Rendering Tests",
             dependencies: [
                 .product(name: "Byte", package: "swift-byte"),
-                .svgRendering,
+                .target(name: "SVG Rendering"),
                 "SVG Rendering Test Support",
             ],
             path: "Tests/SVG Rendering Tests"
