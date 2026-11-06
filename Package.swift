@@ -113,7 +113,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Byte", package: "swift-byte"),
                 .target(name: "SVG Rendering"),
-                "SVG Rendering Test Support",
+                .target(name: "SVG Rendering Test Support"),
             ],
             path: "Tests/SVG Rendering Tests"
         ),
