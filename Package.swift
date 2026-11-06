@@ -23,6 +23,7 @@ let package = Package(
             traits: ["Document"]
         ),
         .package(url: "https://github.com/swift-standards/swift-svg-standard.git", branch: "main"),
+        .package(url: "https://github.com/swift-ietf/swift-rfc-3987.git", branch: "main"),
         .package(
             url: "https://github.com/swift-atoms/swift-formatter.git",
             branch: "main",
@@ -71,6 +72,7 @@ let package = Package(
                 .product(name: "Byte", package: "swift-byte"),
                 .product(name: "Renderer", package: "swift-renderer"),
                 .product(name: "SVG Standard", package: "swift-svg-standard"),
+                .product(name: "RFC 3987", package: "swift-rfc-3987"),
                 .product(name: "ASCII", package: "swift-ascii"),
                 .product(name: "Formatter", package: "swift-formatter"),
                 .product(name: "Space", package: "swift-space"),

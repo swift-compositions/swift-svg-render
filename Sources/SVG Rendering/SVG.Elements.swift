@@ -1,5 +1,6 @@
 import Dictionary_Ordered
 import Formatter
+import RFC_3987
 public import SVG_Standard
 
 extension SVG_Standard.Shapes.Circle {
@@ -141,7 +142,7 @@ extension SVG_Standard.Document.Use {
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
     ) -> some SVG.View {
         SVG.Element(tag: Self.tagName) { content() }
-            .href(self.href)
+            .href(self.href?.value)
             .x(self.x)
             .y(self.y)
             .width(self.width)
@@ -196,7 +197,7 @@ extension SVG_Standard.PaintServers.LinearGradient {
             .y1(self.y1)
             .x2(self.x2)
             .y2(self.y2)
-            .href(self.href)
+            .href(self.href?.value)
             .gradientUnits(self.gradientUnits?.rawValue)
             .gradientTransform(self.gradientTransform)
             .spreadMethod(self.spreadMethod?.rawValue)
@@ -216,7 +217,7 @@ extension SVG_Standard.PaintServers.RadialGradient {
             .fx(self.fx)
             .fy(self.fy)
             .fr(self.fr)
-            .href(self.href)
+            .href(self.href?.value)
             .gradientUnits(self.gradientUnits?.rawValue)
             .gradientTransform(self.gradientTransform)
             .spreadMethod(self.spreadMethod?.rawValue)
@@ -247,7 +248,7 @@ extension SVG_Standard.PaintServers.Pattern {
             .width(self.width)
             .height(self.height)
             .viewBox(self.viewBox?.description)
-            .href(self.href)
+            .href(self.href?.value)
             .patternUnits(self.patternUnits?.rawValue)
             .patternContentUnits(self.patternContentUnits?.rawValue)
             .patternTransform(self.patternTransform)
@@ -310,7 +311,7 @@ extension SVG_Standard.Embedded.Image {
             .y(self.y)
             .width(self.width)
             .height(self.height)
-            .href(self.href)
+            .href(self.href?.value)
             .preserveAspectRatio(self.preserveAspectRatio)
     }
 }
@@ -447,7 +448,7 @@ extension SVG_Standard.Document.Symbol: SVG.View {
 extension SVG_Standard.Document.Use: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
-            .href(self.href)
+            .href(self.href?.value)
             .x(self.x)
             .y(self.y)
             .width(self.width)
@@ -491,7 +492,7 @@ extension SVG_Standard.PaintServers.LinearGradient: SVG.View {
             .y1(self.y1)
             .x2(self.x2)
             .y2(self.y2)
-            .href(self.href)
+            .href(self.href?.value)
             .gradientUnits(self.gradientUnits?.rawValue)
             .gradientTransform(self.gradientTransform)
             .spreadMethod(self.spreadMethod?.rawValue)
@@ -508,7 +509,7 @@ extension SVG_Standard.PaintServers.RadialGradient: SVG.View {
             .fx(self.fx)
             .fy(self.fy)
             .fr(self.fr)
-            .href(self.href)
+            .href(self.href?.value)
             .gradientUnits(self.gradientUnits?.rawValue)
             .gradientTransform(self.gradientTransform)
             .spreadMethod(self.spreadMethod?.rawValue)
@@ -533,7 +534,7 @@ extension SVG_Standard.PaintServers.Pattern: SVG.View {
             .width(self.width)
             .height(self.height)
             .viewBox(self.viewBox?.description)
-            .href(self.href)
+            .href(self.href?.value)
             .patternUnits(self.patternUnits?.rawValue)
             .patternContentUnits(self.patternContentUnits?.rawValue)
             .patternTransform(self.patternTransform)
@@ -584,7 +585,7 @@ extension SVG_Standard.Embedded.Image: SVG.View {
             .y(self.y)
             .width(self.width)
             .height(self.height)
-            .href(self.href)
+            .href(self.href?.value)
             .preserveAspectRatio(self.preserveAspectRatio)
     }
 }
