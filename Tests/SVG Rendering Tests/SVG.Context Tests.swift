@@ -3,7 +3,9 @@ import Dictionary_Ordered
 import SVG_Rendering_Test_Support
 import Testing
 
-extension SVG.Context {
+enum `SVG.Context Tests` {}
+
+extension `SVG.Context Tests` {
     @Suite struct Test {
         @Suite struct Unit {
 

@@ -2,7 +2,9 @@ import Byte
 import SVG_Rendering_Test_Support
 import Testing
 
-extension SVG.Empty {
+enum `SVG.Empty Tests` {}
+
+extension `SVG.Empty Tests` {
     @Suite struct Test {
         @Suite struct Unit {
 

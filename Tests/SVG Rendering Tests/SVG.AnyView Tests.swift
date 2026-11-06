@@ -2,7 +2,9 @@ import Byte
 import SVG_Rendering_Test_Support
 import Testing
 
-extension SVG.AnyView {
+enum `SVG.AnyView Tests` {}
+
+extension `SVG.AnyView Tests` {
 
     static func render<V: SVG.View>(_ view: V) -> String {
         String(decoding: [Byte](view), as: UTF8.self)
