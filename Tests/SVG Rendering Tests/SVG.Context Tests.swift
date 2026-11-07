@@ -44,28 +44,26 @@ extension `SVG.Context Tests` {
                 #expect(context.attributes.isEmpty)
             }
         }
-    }
-}
 
-extension `SVG.Context Tests`.Test {
-    @Suite struct EdgeCase {
+        @Suite struct EdgeCase {
 
-        @Test
-        func `outdented at root level does not underflow`() {
-            let context = SVG.Context(.pretty)
-            let outdented = context.outdented()
-            #expect(outdented.currentIndentation.isEmpty)
-        }
+            @Test
+            func `outdented at root level does not underflow`() {
+                let context = SVG.Context(.pretty)
+                let outdented = context.outdented()
+                #expect(outdented.currentIndentation.isEmpty)
+            }
 
-        @Test
-        func `custom configuration preserves settings`() {
-            let config = SVG.Context.Configuration(
-                indentation: "\t",
-                newline: "\r\n"
-            )
-            let context = SVG.Context(config)
-            #expect(context.configuration.indentation == [Byte](utf8: "\t"))
-            #expect(context.configuration.newline == [Byte](utf8: "\r\n"))
+            @Test
+            func `custom configuration preserves settings`() {
+                let config = SVG.Context.Configuration(
+                    indentation: "\t",
+                    newline: "\r\n"
+                )
+                let context = SVG.Context(config)
+                #expect(context.configuration.indentation == [Byte](utf8: "\t"))
+                #expect(context.configuration.newline == [Byte](utf8: "\r\n"))
+            }
         }
     }
 }

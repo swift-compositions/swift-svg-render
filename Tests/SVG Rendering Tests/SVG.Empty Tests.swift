@@ -22,21 +22,19 @@ extension `SVG.Empty Tests` {
                 #expect(string.isEmpty)
             }
         }
-    }
-}
 
-extension `SVG.Empty Tests`.Test {
-    @Suite struct EdgeCase {
+        @Suite struct EdgeCase {
 
-        @Test
-        func `multiple empties compose to empty`() {
-            let group = SVG.Group {
-                SVG.Empty()
-                SVG.Empty()
-                SVG.Empty()
+            @Test
+            func `multiple empties compose to empty`() {
+                let group = SVG.Group {
+                    SVG.Empty()
+                    SVG.Empty()
+                    SVG.Empty()
+                }
+                let bytes = [Byte](group)
+                #expect(bytes.isEmpty)
             }
-            let bytes = [Byte](group)
-            #expect(bytes.isEmpty)
         }
     }
 }

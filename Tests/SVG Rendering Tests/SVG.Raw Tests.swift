@@ -25,16 +25,14 @@ extension `SVG.Raw Tests` {
                 #expect(string == "<g><rect/></g>")
             }
         }
-    }
-}
 
-extension `SVG.Raw Tests`.Test {
-    @Suite struct EdgeCase {
+        @Suite struct EdgeCase {
 
-        @Test
-        func `empty raw renders empty`() {
-            let string = render(SVG.Raw(""))
-            #expect(string.isEmpty)
+            @Test
+            func `empty raw renders empty`() {
+                let string = render(SVG.Raw(""))
+                #expect(string.isEmpty)
+            }
         }
     }
 }
