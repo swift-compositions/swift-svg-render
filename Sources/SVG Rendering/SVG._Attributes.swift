@@ -11,27 +11,26 @@ extension SVG {
             self.content = content
             self.attributes = attributes
         }
-    }
-}
 
-extension SVG._Attributes {
-    public static func _render<Buffer: RangeReplaceableCollection>(
-        _ svg: Self,
-        into buffer: inout Buffer,
-        context: inout SVG.Context
-    ) where Buffer.Element == Byte {
-        let previousValue = context.attributes
-        defer { context.attributes = previousValue }
-        svg.attributes.forEach { key, value in
-            context.attributes.set(key, value)
+        public static func _render<Buffer: RangeReplaceableCollection>(
+            _ svg: Self,
+            into buffer: inout Buffer,
+            context: inout SVG.Context
+        ) where Buffer.Element == Byte {
+            let previousValue = context.attributes
+            defer { context.attributes = previousValue }
+            svg.attributes.forEach { key, value in
+                context.attributes.set(key, value)
+            }
+            Content._render(svg.content, into: &buffer, context: &context)
         }
-        Content._render(svg.content, into: &buffer, context: &context)
-    }
 
-    public var body: Never { fatalError("body should not be called") }
+        public var body: Never { fatalError("body should not be called") }
+    }
 }
 
 extension SVG._Attributes {
+
     public func attribute(_ name: String, _ value: String? = "") -> SVG._Attributes<Content> {
         var newAttributes = self.attributes
         if let value {
