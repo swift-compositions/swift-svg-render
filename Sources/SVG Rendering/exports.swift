@@ -1,5 +1,5 @@
-@_exported import ASCII
-@_exported import Dictionary
-@_exported import Formatter
-@_exported import Renderer
-@_exported import SVG_Standard
+@_exported public import ASCII
+@_exported public import Dictionary
+@_exported public import Formatter
+@_exported public import Renderer
+@_exported public import SVG_Standard
