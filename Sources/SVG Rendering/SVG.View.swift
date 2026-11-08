@@ -2,8 +2,8 @@ public import Byte
 import Dictionary_Ordered
 import Formatter
 public import Renderer
-import Space
 public import SVG_Standard
+import Space
 
 public enum SVG {}
 
