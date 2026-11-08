@@ -62,26 +62,28 @@ extension `SVG.Text Tests` {
                 #expect(string == "Hello")
             }
         }
+    }
+}
 
-        @Suite struct EdgeCase {
+extension `SVG.Text Tests`.Test {
+    @Suite struct EdgeCase {
 
-            @Test
-            func `empty string renders empty`() {
-                let string = render(SVG.Text(""))
-                #expect(string.isEmpty)
-            }
+        @Test
+        func `empty string renders empty`() {
+            let string = render(SVG.Text(""))
+            #expect(string.isEmpty)
+        }
 
-            @Test
-            func `escapes all special characters in sequence`() {
-                let string = render(SVG.Text("<script>alert('xss')</script>"))
-                #expect(string == "&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;")
-            }
+        @Test
+        func `escapes all special characters in sequence`() {
+            let string = render(SVG.Text("<script>alert('xss')</script>"))
+            #expect(string == "&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;")
+        }
 
-            @Test
-            func `preserves non-ASCII unicode`() {
-                let string = render(SVG.Text("cafe\u{0301}"))
-                #expect(string == "cafe\u{0301}")
-            }
+        @Test
+        func `preserves non-ASCII unicode`() {
+            let string = render(SVG.Text("cafe\u{0301}"))
+            #expect(string == "cafe\u{0301}")
         }
     }
 }
