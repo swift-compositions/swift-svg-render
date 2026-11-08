@@ -31,15 +31,6 @@ extension SVG.Context {
 }
 
 extension SVG.Context {
-    public struct Configuration: Sendable {
-        public var indentation: [Byte]
-        public var newline: [Byte]
-
-        public init(indentation: String = "", newline: String = "") {
-            self.indentation = [Byte](utf8: indentation)
-            self.newline = [Byte](utf8: newline)
-        }
-    }
 }
 
 extension SVG.Context.Configuration {
