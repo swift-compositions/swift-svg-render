@@ -1,6 +1,15 @@
 public import Byte
 public import Dictionary_Ordered
 import Renderer
+public import Buffer
+public import Buffer_Linear_Primitive
+public import Dictionary
+public import Hash_Indexed_Primitive
+public import Hash_Table_Primitive
+public import Memory
+public import Memory_Allocator
+public import Ownership_Shared_Primitive
+public import Storage
 
 extension SVG {
     public struct Context: Sendable {
@@ -72,4 +81,14 @@ extension SVG.Context {
             buffer.append(contentsOf: currentIndentation)
         }
     }
+}
+
+extension SVG.Context {
+
+    public typealias Attributes = __DictionaryOrdered<
+        Ownership.Shared<
+            Hash.Entry<String, String>,
+            Hash.Indexed<Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<Hash.Entry<String, String>>>.Linear>
+        >
+    >
 }
