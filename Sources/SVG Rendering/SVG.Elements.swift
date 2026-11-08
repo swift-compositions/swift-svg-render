@@ -3,7 +3,7 @@ import Formatter
 import RFC_3987
 public import SVG_Standard
 
-extension SVG_Standard.Shapes.Circle {
+extension SVG_Standard::Shapes.Circle {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -15,7 +15,7 @@ extension SVG_Standard.Shapes.Circle {
     }
 }
 
-extension SVG_Standard.Shapes.Rectangle {
+extension SVG_Standard::Shapes.Rectangle {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -28,7 +28,7 @@ extension SVG_Standard.Shapes.Rectangle {
     }
 }
 
-extension SVG_Standard.Shapes.Ellipse {
+extension SVG_Standard::Shapes.Ellipse {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -41,7 +41,7 @@ extension SVG_Standard.Shapes.Ellipse {
     }
 }
 
-extension SVG_Standard.Shapes.Line {
+extension SVG_Standard::Shapes.Line {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -54,7 +54,7 @@ extension SVG_Standard.Shapes.Line {
     }
 }
 
-extension SVG_Standard.Shapes.Polygon {
+extension SVG_Standard::Shapes.Polygon {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -64,7 +64,7 @@ extension SVG_Standard.Shapes.Polygon {
     }
 }
 
-extension SVG_Standard.Shapes.Polyline {
+extension SVG_Standard::Shapes.Polyline {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -74,7 +74,7 @@ extension SVG_Standard.Shapes.Polyline {
     }
 }
 
-extension SVG_Standard.Paths.Path {
+extension SVG_Standard::Paths.Path {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -85,7 +85,7 @@ extension SVG_Standard.Paths.Path {
     }
 }
 
-extension SVG_Standard.Document.SVG {
+extension SVG_Standard::Document.SVG {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -99,7 +99,7 @@ extension SVG_Standard.Document.SVG {
     }
 }
 
-extension SVG_Standard.Document.Group {
+extension SVG_Standard::Document.Group {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -109,7 +109,7 @@ extension SVG_Standard.Document.Group {
     }
 }
 
-extension SVG_Standard.Document.Defs {
+extension SVG_Standard::Document.Defs {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -118,7 +118,7 @@ extension SVG_Standard.Document.Defs {
     }
 }
 
-extension SVG_Standard.Document.Symbol {
+extension SVG_Standard::Document.Symbol {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -136,7 +136,7 @@ extension SVG_Standard.Document.Symbol {
     }
 }
 
-extension SVG_Standard.Document.Use {
+extension SVG_Standard::Document.Use {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -150,7 +150,7 @@ extension SVG_Standard.Document.Use {
     }
 }
 
-extension SVG_Standard.Text.Text {
+extension SVG_Standard::Text.Text {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -168,7 +168,7 @@ extension SVG_Standard.Text.Text {
     }
 }
 
-extension SVG_Standard.Text.TSpan {
+extension SVG_Standard::Text.TSpan {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -186,7 +186,7 @@ extension SVG_Standard.Text.TSpan {
     }
 }
 
-extension SVG_Standard.PaintServers.LinearGradient {
+extension SVG_Standard::PaintServers.LinearGradient {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -204,7 +204,7 @@ extension SVG_Standard.PaintServers.LinearGradient {
     }
 }
 
-extension SVG_Standard.PaintServers.RadialGradient {
+extension SVG_Standard::PaintServers.RadialGradient {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -224,7 +224,7 @@ extension SVG_Standard.PaintServers.RadialGradient {
     }
 }
 
-extension SVG_Standard.PaintServers.Stop {
+extension SVG_Standard::PaintServers.Stop {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -236,7 +236,7 @@ extension SVG_Standard.PaintServers.Stop {
     }
 }
 
-extension SVG_Standard.PaintServers.Pattern {
+extension SVG_Standard::PaintServers.Pattern {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -256,7 +256,7 @@ extension SVG_Standard.PaintServers.Pattern {
     }
 }
 
-extension SVG_Standard.Painting.ClipPath {
+extension SVG_Standard::Painting.ClipPath {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -267,7 +267,7 @@ extension SVG_Standard.Painting.ClipPath {
     }
 }
 
-extension SVG_Standard.Painting.Mask {
+extension SVG_Standard::Painting.Mask {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -283,7 +283,7 @@ extension SVG_Standard.Painting.Mask {
     }
 }
 
-extension SVG_Standard.Painting.Marker {
+extension SVG_Standard::Painting.Marker {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -301,7 +301,7 @@ extension SVG_Standard.Painting.Marker {
     }
 }
 
-extension SVG_Standard.Embedded.Image {
+extension SVG_Standard::Embedded.Image {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -316,7 +316,7 @@ extension SVG_Standard.Embedded.Image {
     }
 }
 
-extension SVG_Standard.Embedded.ForeignObject {
+extension SVG_Standard::Embedded.ForeignObject {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -329,7 +329,7 @@ extension SVG_Standard.Embedded.ForeignObject {
     }
 }
 
-extension SVG_Standard.Scripting.Switch {
+extension SVG_Standard::Scripting.Switch {
 
     public func callAsFunction<Content: SVG.View>(
         @SVG.Builder _ content: () -> Content = { SVG.Empty() }
@@ -385,20 +385,20 @@ extension Geometry.Polygon: SVG.View where Scalar == Double, Space == W3C_SVG.Sp
     }
 }
 
-extension SVG_Standard.Shapes.Line: SVG.View {
+extension SVG_Standard::Shapes.Line: SVG.View {
     public var body: some SVG.View {
         svg
     }
 }
 
-extension SVG_Standard.Shapes.Polyline: SVG.View {
+extension SVG_Standard::Shapes.Polyline: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .points(self.points)
     }
 }
 
-extension SVG_Standard.Paths.Path: SVG.View {
+extension SVG_Standard::Paths.Path: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .d(self.d)
@@ -406,7 +406,7 @@ extension SVG_Standard.Paths.Path: SVG.View {
     }
 }
 
-extension SVG_Standard.Document.SVG: SVG.View {
+extension SVG_Standard::Document.SVG: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .x(self.x?.description)
@@ -417,20 +417,20 @@ extension SVG_Standard.Document.SVG: SVG.View {
     }
 }
 
-extension SVG_Standard.Document.Group: SVG.View {
+extension SVG_Standard::Document.Group: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
     }
 }
 
-extension SVG_Standard.Document.Defs: SVG.View {
+extension SVG_Standard::Document.Defs: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
     }
 }
 
-extension SVG_Standard.Document.Symbol: SVG.View {
+extension SVG_Standard::Document.Symbol: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -445,7 +445,7 @@ extension SVG_Standard.Document.Symbol: SVG.View {
     }
 }
 
-extension SVG_Standard.Document.Use: SVG.View {
+extension SVG_Standard::Document.Use: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .href(self.href?.value)
@@ -456,7 +456,7 @@ extension SVG_Standard.Document.Use: SVG.View {
     }
 }
 
-extension SVG_Standard.Text.Text: SVG.View {
+extension SVG_Standard::Text.Text: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) {
             if let textContent = self.content {
@@ -470,7 +470,7 @@ extension SVG_Standard.Text.Text: SVG.View {
     }
 }
 
-extension SVG_Standard.Text.TSpan: SVG.View {
+extension SVG_Standard::Text.TSpan: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) {
             if let textContent = self.content {
@@ -484,7 +484,7 @@ extension SVG_Standard.Text.TSpan: SVG.View {
     }
 }
 
-extension SVG_Standard.PaintServers.LinearGradient: SVG.View {
+extension SVG_Standard::PaintServers.LinearGradient: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -499,7 +499,7 @@ extension SVG_Standard.PaintServers.LinearGradient: SVG.View {
     }
 }
 
-extension SVG_Standard.PaintServers.RadialGradient: SVG.View {
+extension SVG_Standard::PaintServers.RadialGradient: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -516,7 +516,7 @@ extension SVG_Standard.PaintServers.RadialGradient: SVG.View {
     }
 }
 
-extension SVG_Standard.PaintServers.Stop: SVG.View {
+extension SVG_Standard::PaintServers.Stop: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .offset(self.offset)
@@ -525,7 +525,7 @@ extension SVG_Standard.PaintServers.Stop: SVG.View {
     }
 }
 
-extension SVG_Standard.PaintServers.Pattern: SVG.View {
+extension SVG_Standard::PaintServers.Pattern: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -542,7 +542,7 @@ extension SVG_Standard.PaintServers.Pattern: SVG.View {
     }
 }
 
-extension SVG_Standard.Painting.ClipPath: SVG.View {
+extension SVG_Standard::Painting.ClipPath: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -550,7 +550,7 @@ extension SVG_Standard.Painting.ClipPath: SVG.View {
     }
 }
 
-extension SVG_Standard.Painting.Mask: SVG.View {
+extension SVG_Standard::Painting.Mask: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -563,7 +563,7 @@ extension SVG_Standard.Painting.Mask: SVG.View {
     }
 }
 
-extension SVG_Standard.Painting.Marker: SVG.View {
+extension SVG_Standard::Painting.Marker: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .id(self.id)
@@ -578,7 +578,7 @@ extension SVG_Standard.Painting.Marker: SVG.View {
     }
 }
 
-extension SVG_Standard.Embedded.Image: SVG.View {
+extension SVG_Standard::Embedded.Image: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .x(self.x)
@@ -590,7 +590,7 @@ extension SVG_Standard.Embedded.Image: SVG.View {
     }
 }
 
-extension SVG_Standard.Embedded.ForeignObject: SVG.View {
+extension SVG_Standard::Embedded.ForeignObject: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
             .x(self.x)
@@ -600,7 +600,7 @@ extension SVG_Standard.Embedded.ForeignObject: SVG.View {
     }
 }
 
-extension SVG_Standard.Scripting.Switch: SVG.View {
+extension SVG_Standard::Scripting.Switch: SVG.View {
     public var body: some SVG.View {
         SVG.Element(tag: Self.tagName) { SVG.Empty() }
     }

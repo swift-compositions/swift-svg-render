@@ -65,7 +65,7 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Shapes.Circle(cx: 50, cy: 50, r: 40)()
+                SVG_Standard::Shapes.Circle(cx: 50, cy: 50, r: 40)()
             },
             matches: {
                 """
@@ -80,7 +80,7 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Shapes.Rectangle(x: 10, y: 20, width: 100, height: 50)()
+                SVG_Standard::Shapes.Rectangle(x: 10, y: 20, width: 100, height: 50)()
             },
             matches: {
                 """
@@ -95,10 +95,10 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Document.SVG(
+                SVG_Standard::Document.SVG(
                     width: .number(200),
                     height: .number(100),
-                    viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 200, height: 100)
+                    viewBox: SVG_Standard::Types.ViewBox(minX: 0, minY: 0, width: 200, height: 100)
                 )()
             },
             matches: {
@@ -114,7 +114,7 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Shapes.Circle(cx: 50, cy: 50, r: 40)()
+                SVG_Standard::Shapes.Circle(cx: 50, cy: 50, r: 40)()
                     .fill("red")
                     .stroke("black")
                     .strokeWidth(2)
@@ -132,8 +132,8 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Document.SVG(width: .number(100), height: .number(100)) {
-                    SVG_Standard.Shapes.Circle(cx: 50, cy: 50, r: 40)()
+                SVG_Standard::Document.SVG(width: .number(100), height: .number(100)) {
+                    SVG_Standard::Shapes.Circle(cx: 50, cy: 50, r: 40)()
                         .fill("blue")
                 }
             },
@@ -373,16 +373,16 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Document.SVG(
+                SVG_Standard::Document.SVG(
                     width: .number(200),
                     height: .number(200),
-                    viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 200, height: 200)
+                    viewBox: SVG_Standard::Types.ViewBox(minX: 0, minY: 0, width: 200, height: 200)
                 ) {
-                    SVG_Standard.Shapes.Circle(cx: 100, cy: 100, r: 50)()
+                    SVG_Standard::Shapes.Circle(cx: 100, cy: 100, r: 50)()
                         .fill("blue")
                         .stroke("black")
                         .strokeWidth(2)
-                    SVG_Standard.Shapes.Rectangle(x: 25, y: 25, width: 50, height: 50)()
+                    SVG_Standard::Shapes.Rectangle(x: 25, y: 25, width: 50, height: 50)()
                         .fill("red")
                 }
             },
@@ -401,7 +401,7 @@ extension SVG.Test.Snapshot {
         snapshot(
             as: .svg,
             {
-                SVG_Standard.Document.SVG(
+                SVG_Standard::Document.SVG(
                     width: .number(200),
                     height: .number(200)
                 ) {
