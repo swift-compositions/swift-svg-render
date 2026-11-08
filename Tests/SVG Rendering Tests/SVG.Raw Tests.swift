@@ -15,13 +15,13 @@ extension `SVG.Raw Tests` {
 
             @Test
             func `renders content verbatim`() {
-                let string = render(SVG.Raw("<circle cx=\"50\" cy=\"50\" r=\"40\"/>"))
+                let string = `SVG.Raw Tests`.render(SVG.Raw("<circle cx=\"50\" cy=\"50\" r=\"40\"/>"))
                 #expect(string == "<circle cx=\"50\" cy=\"50\" r=\"40\"/>")
             }
 
             @Test
             func `does not escape special characters`() {
-                let string = render(SVG.Raw("<g><rect/></g>"))
+                let string = `SVG.Raw Tests`.render(SVG.Raw("<g><rect/></g>"))
                 #expect(string == "<g><rect/></g>")
             }
         }
@@ -33,7 +33,7 @@ extension `SVG.Raw Tests`.Test {
 
         @Test
         func `empty raw renders empty`() {
-            let string = render(SVG.Raw(""))
+            let string = `SVG.Raw Tests`.render(SVG.Raw(""))
             #expect(string.isEmpty)
         }
     }

@@ -15,7 +15,7 @@ extension `SVG.AnyView Tests` {
 
             @Test
             func `type erases text view`() {
-                let string = render(SVG.AnyView(SVG.Text("Hello")))
+                let string = `SVG.AnyView Tests`.render(SVG.AnyView(SVG.Text("Hello")))
                 #expect(string == "Hello")
             }
 
@@ -23,14 +23,14 @@ extension `SVG.AnyView Tests` {
             func `type erases element view`() {
                 let circle = SVG.Element(tag: "circle") { SVG.Empty() }
                 let styled = circle.fill("blue").stroke("black")
-                let string = render(SVG.AnyView(styled))
+                let string = `SVG.AnyView Tests`.render(SVG.AnyView(styled))
                 #expect(string.contains("<circle"))
                 #expect(string.contains("fill=\"blue\""))
             }
 
             @Test
             func `closure initializer works`() {
-                let string = render(
+                let string = `SVG.AnyView Tests`.render(
                     SVG.AnyView {
                         SVG.Text("From closure")
                     }
