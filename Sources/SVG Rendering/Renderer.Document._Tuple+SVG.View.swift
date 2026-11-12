@@ -1,19 +1,21 @@
 public import Byte
 public import Renderer
 
-extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View {
-    public var body: Never { fatalError("body should not be called") }
+#if !hasFeature(Embedded)
+    extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View {
+        public var body: Never { fatalError("body should not be called") }
 
-    public static func _render<Buffer: RangeReplaceableCollection>(
-        _ svg: Self,
-        into buffer: inout Buffer,
-        context: inout SVG.Context
-    ) where Buffer.Element == Byte {
-        func render<T: SVG.View>(_ element: T) {
-            let oldAttributes = context.attributes
-            defer { context.attributes = oldAttributes }
-            T._render(element, into: &buffer, context: &context)
+        public static func _render<Buffer: RangeReplaceableCollection>(
+            _ svg: Self,
+            into buffer: inout Buffer,
+            context: inout SVG.Context
+        ) where Buffer.Element == Byte {
+            func render<T: SVG.View>(_ element: T) {
+                let oldAttributes = context.attributes
+                defer { context.attributes = oldAttributes }
+                T._render(element, into: &buffer, context: &context)
+            }
+            repeat render(each svg.content)
         }
-        repeat render(each svg.content)
     }
-}
+#endif
