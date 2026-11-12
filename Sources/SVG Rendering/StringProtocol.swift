@@ -7,7 +7,7 @@ extension StringProtocol {
         configuration: SVG.Context.Configuration? = nil
     ) {
         let bytes = ContiguousArray<Byte>(svg, configuration: configuration)
-        self = Self(decoding: bytes.lazy.map(\.bitPattern), as: UTF8.self)
+        self = Self(decoding: bytes.lazy.map({ $0.bitPattern }), as: UTF8.self)
     }
 }
 
@@ -19,6 +19,6 @@ extension StringProtocol {
         configuration: SVG.Context.Configuration? = nil
     ) async {
         let bytes = await [Byte](view, configuration: configuration)
-        self = Self(decoding: bytes.lazy.map(\.bitPattern), as: UTF8.self)
+        self = Self(decoding: bytes.lazy.map({ $0.bitPattern }), as: UTF8.self)
     }
 }
