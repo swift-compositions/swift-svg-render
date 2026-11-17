@@ -17,11 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-byte.git", branch: "main"),
-        .package(
-            url: "https://github.com/swift-atoms/swift-renderer.git",
-            branch: "main",
-            traits: ["Document"]
-        ),
+        .package(url: "https://github.com/swift-atoms/swift-renderer.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-svg-standard.git", branch: "main"),
         .package(url: "https://github.com/swift-ietf/swift-rfc-3987.git", branch: "main"),
         .package(
