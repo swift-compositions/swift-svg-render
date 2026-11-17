@@ -1,5 +1,6 @@
 public import Byte
 public import Renderer
+public import Renderer_Document
 
 #if !hasFeature(Embedded)
     extension Renderer.Document._Tuple: SVG.View where repeat each Content: SVG.View {

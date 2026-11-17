@@ -1,5 +1,6 @@
 public import Byte
 public import Renderer
+public import Renderer_Document
 
 extension Renderer.Document.Conditional: SVG.View where First: SVG.View, Second: SVG.View {
     public var body: Never { fatalError("body should not be called") }

@@ -18,6 +18,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-byte.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-renderer.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-renderer-document.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-svg-standard.git", branch: "main"),
         .package(url: "https://github.com/swift-ietf/swift-rfc-3987.git", branch: "main"),
         .package(
@@ -67,6 +68,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Byte", package: "swift-byte"),
                 .product(name: "Renderer", package: "swift-renderer"),
+                .product(name: "Renderer Document", package: "swift-renderer-document"),
                 .product(name: "SVG Standard", package: "swift-svg-standard"),
                 .product(name: "RFC 3987", package: "swift-rfc-3987"),
                 .product(name: "ASCII", package: "swift-ascii"),
