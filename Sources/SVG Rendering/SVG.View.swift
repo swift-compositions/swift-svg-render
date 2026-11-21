@@ -526,79 +526,79 @@ extension SVG.View {
 
 extension SVG.View {
 
-    public func x(_ value: W3C_SVG2.X?) -> SVG._Attributes<Self> {
+    public func x(_ value: W3C.SVG.`2`.X?) -> SVG._Attributes<Self> {
         return attribute("x", value)
     }
 
-    public func y(_ value: W3C_SVG2.Y?) -> SVG._Attributes<Self> {
+    public func y(_ value: W3C.SVG.`2`.Y?) -> SVG._Attributes<Self> {
         return attribute("y", value)
     }
 
-    public func width(_ value: W3C_SVG2.Width?) -> SVG._Attributes<Self> {
+    public func width(_ value: W3C.SVG.`2`.Width?) -> SVG._Attributes<Self> {
         return attribute("width", value)
     }
 
-    public func height(_ value: W3C_SVG2.Height?) -> SVG._Attributes<Self> {
+    public func height(_ value: W3C.SVG.`2`.Height?) -> SVG._Attributes<Self> {
         return attribute("height", value)
     }
 
-    public func cx(_ value: W3C_SVG2.X?) -> SVG._Attributes<Self> {
+    public func cx(_ value: W3C.SVG.`2`.X?) -> SVG._Attributes<Self> {
         return attribute("cx", value)
     }
 
-    public func cy(_ value: W3C_SVG2.Y?) -> SVG._Attributes<Self> {
+    public func cy(_ value: W3C.SVG.`2`.Y?) -> SVG._Attributes<Self> {
         return attribute("cy", value)
     }
 
-    public func r(_ value: W3C_SVG2.Radius?) -> SVG._Attributes<Self> {
+    public func r(_ value: W3C.SVG.`2`.Radius?) -> SVG._Attributes<Self> {
         return attribute("r", value)
     }
 
-    public func rx(_ value: W3C_SVG2.Width?) -> SVG._Attributes<Self> {
+    public func rx(_ value: W3C.SVG.`2`.Width?) -> SVG._Attributes<Self> {
         return attribute("rx", value)
     }
 
-    public func ry(_ value: W3C_SVG2.Height?) -> SVG._Attributes<Self> {
+    public func ry(_ value: W3C.SVG.`2`.Height?) -> SVG._Attributes<Self> {
         return attribute("ry", value)
     }
 
-    public func x1(_ value: W3C_SVG2.X?) -> SVG._Attributes<Self> {
+    public func x1(_ value: W3C.SVG.`2`.X?) -> SVG._Attributes<Self> {
         return attribute("x1", value)
     }
 
-    public func y1(_ value: W3C_SVG2.Y?) -> SVG._Attributes<Self> {
+    public func y1(_ value: W3C.SVG.`2`.Y?) -> SVG._Attributes<Self> {
         return attribute("y1", value)
     }
 
-    public func x2(_ value: W3C_SVG2.X?) -> SVG._Attributes<Self> {
+    public func x2(_ value: W3C.SVG.`2`.X?) -> SVG._Attributes<Self> {
         return attribute("x2", value)
     }
 
-    public func y2(_ value: W3C_SVG2.Y?) -> SVG._Attributes<Self> {
+    public func y2(_ value: W3C.SVG.`2`.Y?) -> SVG._Attributes<Self> {
         return attribute("y2", value)
     }
 
-    public func dx(_ value: W3C_SVG2.Dx?) -> SVG._Attributes<Self> {
+    public func dx(_ value: W3C.SVG.`2`.Dx?) -> SVG._Attributes<Self> {
         return attribute("dx", value)
     }
 
-    public func dy(_ value: W3C_SVG2.Dy?) -> SVG._Attributes<Self> {
+    public func dy(_ value: W3C.SVG.`2`.Dy?) -> SVG._Attributes<Self> {
         return attribute("dy", value)
     }
 
-    public func refX(_ value: W3C_SVG2.X?) -> SVG._Attributes<Self> {
+    public func refX(_ value: W3C.SVG.`2`.X?) -> SVG._Attributes<Self> {
         return attribute("refX", value)
     }
 
-    public func refY(_ value: W3C_SVG2.Y?) -> SVG._Attributes<Self> {
+    public func refY(_ value: W3C.SVG.`2`.Y?) -> SVG._Attributes<Self> {
         return attribute("refY", value)
     }
 
-    public func markerWidth(_ value: W3C_SVG2.Width?) -> SVG._Attributes<Self> {
+    public func markerWidth(_ value: W3C.SVG.`2`.Width?) -> SVG._Attributes<Self> {
         return attribute("markerWidth", value)
     }
 
-    public func markerHeight(_ value: W3C_SVG2.Height?) -> SVG._Attributes<Self> {
+    public func markerHeight(_ value: W3C.SVG.`2`.Height?) -> SVG._Attributes<Self> {
         return attribute("markerHeight", value)
     }
 }

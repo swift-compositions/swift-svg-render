@@ -361,25 +361,25 @@ extension SVG.View {
     }
 }
 
-extension Geometry.Ball: SVG.View where Scalar == Double, Space == W3C_SVG.Space, N == 2 {
+extension Geometry.Ball: SVG.View where Scalar == Double, Space == W3C.SVG.Space, N == 2 {
     public var body: some SVG.View {
         svg
     }
 }
 
-extension Geometry.Orthotope: SVG.View where Scalar == Double, Space == W3C_SVG.Space, N == 2 {
+extension Geometry.Orthotope: SVG.View where Scalar == Double, Space == W3C.SVG.Space, N == 2 {
     public var body: some SVG.View {
         svg
     }
 }
 
-extension Geometry.Ellipse: SVG.View where Scalar == Double, Space == W3C_SVG.Space {
+extension Geometry.Ellipse: SVG.View where Scalar == Double, Space == W3C.SVG.Space {
     public var body: some SVG.View {
         svg
     }
 }
 
-extension Geometry.Polygon: SVG.View where Scalar == Double, Space == W3C_SVG.Space {
+extension Geometry.Polygon: SVG.View where Scalar == Double, Space == W3C.SVG.Space {
     public var body: some SVG.View {
         svg
     }

@@ -150,8 +150,8 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle math translation renders via svg`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 25)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 25)
+        let translated = circle.translated(by: W3C.SVG.`2`.Vector(dx: 50, dy: 50), using: .cartesian)
         snapshot(
             as: .svg,
             { translated.svg },
@@ -165,7 +165,7 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle math scaling renders larger radius`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 10)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 10)
         let scaled = circle.scaled(by: 2.0)
         snapshot(
             as: .svg,
@@ -180,8 +180,8 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle math scale about point`() {
-        let circle = W3C_SVG2.Circle(cx: 10, cy: 0, r: 5)
-        let scaled = circle.scaled(by: 2.0, about: W3C_SVG2.Point(x: 0, y: 0))
+        let circle = W3C.SVG.`2`.Circle(cx: 10, cy: 0, r: 5)
+        let scaled = circle.scaled(by: 2.0, about: W3C.SVG.`2`.Point(x: 0, y: 0))
         snapshot(
             as: .svg,
             { scaled.svg },
@@ -195,8 +195,8 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle svg translated adds transform attribute`() {
-        let circle = W3C_SVG2.Circle(cx: 25, cy: 25, r: 20)
-        let view = circle.svg.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50))
+        let circle = W3C.SVG.`2`.Circle(cx: 25, cy: 25, r: 20)
+        let view = circle.svg.translated(by: W3C.SVG.`2`.Vector(dx: 50, dy: 50))
         snapshot(
             as: .svg,
             { view },
@@ -210,7 +210,7 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle svg scaled adds scale transform`() {
-        let circle = W3C_SVG2.Circle(cx: 25, cy: 25, r: 10)
+        let circle = W3C.SVG.`2`.Circle(cx: 25, cy: 25, r: 10)
         let view = circle.svg.scaled(by: 2.0)
         snapshot(
             as: .svg,
@@ -225,8 +225,8 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle svg rotated adds rotate transform`() {
-        let circle = W3C_SVG2.Circle(cx: 50, cy: 0, r: 10)
-        let view = circle.svg.rotated(by: W3C_SVG2.Degrees(45))
+        let circle = W3C.SVG.`2`.Circle(cx: 50, cy: 0, r: 10)
+        let view = circle.svg.rotated(by: W3C.SVG.`2`.Degrees(45))
         snapshot(
             as: .svg,
             { view },
@@ -240,10 +240,10 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle svg rotated around center point`() {
-        let circle = W3C_SVG2.Circle(cx: 100, cy: 0, r: 10)
+        let circle = W3C.SVG.`2`.Circle(cx: 100, cy: 0, r: 10)
         let view = circle.svg.rotated(
-            by: W3C_SVG2.Degrees(90),
-            around: W3C_SVG2.Point(x: 0, y: 0)
+            by: W3C.SVG.`2`.Degrees(90),
+            around: W3C.SVG.`2`.Point(x: 0, y: 0)
         )
         snapshot(
             as: .svg,
@@ -258,9 +258,9 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Math translation then SVG rotation`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 15)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
-        let view = translated.svg.rotated(by: W3C_SVG2.Degrees(45))
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 15)
+        let translated = circle.translated(by: W3C.SVG.`2`.Vector(dx: 50, dy: 50), using: .cartesian)
+        let view = translated.svg.rotated(by: W3C.SVG.`2`.Degrees(45))
         snapshot(
             as: .svg,
             { view },
@@ -274,9 +274,9 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Math scaling then SVG translation`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 10)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 10)
         let scaled = circle.scaled(by: 3.0)
-        let view = scaled.svg.translated(by: W3C_SVG2.Vector(dx: 100, dy: 100))
+        let view = scaled.svg.translated(by: W3C.SVG.`2`.Vector(dx: 100, dy: 100))
         snapshot(
             as: .svg,
             { view },
@@ -290,11 +290,11 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Chained math operations then SVG context`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 5)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 5)
         let transformed =
             circle
             .scaled(by: 2.0)
-            .translated(by: W3C_SVG2.Vector(dx: 25, dy: 25), using: .cartesian)
+            .translated(by: W3C.SVG.`2`.Vector(dx: 25, dy: 25), using: .cartesian)
         let view = transformed.svg.scaled(by: 1.5)
         snapshot(
             as: .svg,
@@ -309,10 +309,10 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle with fill after math and SVG transforms`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 20)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 20)
+        let translated = circle.translated(by: W3C.SVG.`2`.Vector(dx: 50, dy: 50), using: .cartesian)
         let view = translated.svg
-            .rotated(by: W3C_SVG2.Degrees(30))
+            .rotated(by: W3C.SVG.`2`.Degrees(30))
             .fill("red")
             .stroke("black")
             .strokeWidth(2)
@@ -329,7 +329,7 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Circle area after math scaling`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 10)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 10)
         let scaled = circle.scaled(by: 2.0)
         let originalArea = circle.area
         let scaledArea = scaled.area
@@ -347,8 +347,8 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `Bounding box after math translation`() {
-        let circle = W3C_SVG2.Circle(cx: 0, cy: 0, r: 10)
-        let translated = circle.translated(by: W3C_SVG2.Vector(dx: 50, dy: 50), using: .cartesian)
+        let circle = W3C.SVG.`2`.Circle(cx: 0, cy: 0, r: 10)
+        let translated = circle.translated(by: W3C.SVG.`2`.Vector(dx: 50, dy: 50), using: .cartesian)
         let bbox = translated.boundingBox
         #expect(bbox.llx.rawValue - 40.0 < 0.001)
         #expect(bbox.lly.rawValue - 40.0 < 0.001)
@@ -396,7 +396,7 @@ extension SVG.Test.Snapshot {
 
     @Test
     func `SVG with geometry types directly`() {
-        let circle = W3C_SVG2.Circle(cx: 50, cy: 50, r: 30)
+        let circle = W3C.SVG.`2`.Circle(cx: 50, cy: 50, r: 30)
         let scaledCircle = circle.scaled(by: 1.5)
         snapshot(
             as: .svg,
